@@ -11,860 +11,780 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #2d2d2d;
-            --secondary: #4a4a4a;
-            --accent: #6b6b6b;
-            --light: #f8f8f8;
-            --white: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.1);
-            --shadow-hover: rgba(0, 0, 0, 0.15);
-        }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
-            background: var(--light);
-            color: var(--primary);
-            line-height: 1.6;
+            overflow: hidden;
+            background: #000;
+            color: #fff;
         }
 
-        /* 헤더 */
-        .header {
-            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABLAAAAJYCAYAAABNXjhMAAAACXBIWXMAABYlAAAWJQFJUiTwAAAHYGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgOS4xLWMwMDEgNzkuMTQ2Mjg5OSwgMjAyMy8wNi8yNS0yMDowMTo1NSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDI1LjEgKE1hY2ludG9zaCkiIHhtcDpDcmVhdGVEYXRlPSIyMDI0LTExLTA2VDExOjMwOjAyKzA5OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyNC0xMS0wNlQxMTozMDo1MCswOTowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyNC0xMS0wNlQxMTozMDo1MCswOTowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YzM4YzU0NzAtOWNkNC00YTM5LWI3ZDMtZGY3ZWQyMTBmNjUwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOmMzOGM1NDcwLTljZDQtNGEzOS1iN2QzLWRmN2VkMjEwZjY1MCIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOmMzOGM1NDcwLTljZDQtNGEzOS1iN2QzLWRmN2VkMjEwZjY1MCI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNyZWF0ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YzM4YzU0NzAtOWNkNC00YTM5LWI3ZDMtZGY3ZWQyMTBmNjUwIiBzdEV2dDp3aGVuPSIyMDI0LTExLTA2VDExOjMwOjAyKzA5OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjUuMSAoTWFjaW50b3NoKSIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4dBLx1AAAEsklEQVR4nO3VMQEAIAzAMMC/52ECL7KEdvUwoEsfASBJdwcAAIC7DAYAAJKHAQAAJG8AAABI3gAAAABeZjAAAIAkgwEAACR5AwAAQPI2AAAAJHkbAAAAkrwNAAAASd4GAACAvAwGAACQ5A0AAAAkeQMAAACStwEAACB5GwAAAJK8DQAAAEneBgAAgCRvAwAAQJK3AQAAIL0MBgAAkOQNAAAAJHkDAAAASd4AAABIkjcAAAAgeQMAAADSy2AAAABJ3gAAAJDkDQAAQJI3AAAAkuQNAAAASN4AAACAvAwGAACQ5A0AAAAkeQMAAACStwEAACB5GwAAAJK3AQAAIL0MBgAAkOQNAAAAJHkDAAAASd4AAABIkjcAAAAgeRsAAACStwEAACB5GwAAAJK8DQAAAEneBgAAgPQyGAAAQJI3AAAAkuQNAAAAJHkDAAAASd4AAACAvAwGAACQ5A0AAAAkeQMAAACStwEAACB5GwAAAJK8DQAAAOnlbQAAAEjyBgAAgCRvAAAAJMkbAAAAkLwNAAAAydsAAACQvA0AAADpZTAAAACJvAEAACB5AwAAQJI3AAAAkuQNAAAASN4GAACAvAwGAACQ5A0AAAAkeQMAAACStwEAACB5GwAAAJK3AQAAIL0MBgAAkOQNAAAAJHkDAAAASd4AAABIkjcAAAAgeRsAAACStwEAACB5GwAAAJK8DQAAAEneBgAAgPQyGAAAQJI3AAAAkuQNAAAAJHkDAAAASd4AAACAvAwGAACQ5A0AAAAkeQMAAACStwEAACB5GwAAAJK3AQAAIL0MBgAAkOQNAAAAJHkDAAAASd4AAABIkjcAAAAgeRsAAACStwEAACB5GwAAAJK8DQAAAEneBgAAgPQyGAAAQJI3AAAAkuQNAAAAJHkDAAAASd4AAACAvAwGAACQ5A0AAAAkeQMAAACStwEAACB5GwAAAJK3AQAAIL0MBgAAkOQNAAAAJHkDAAAASd4AAABIkjcAAAAgeRsAAACStwEAACB5GwAAAJK8DQAAAEneBgAAgPQyGAAAQJI3AAAAkuQNAAAAJHkDAAAASd4AAACAvAwGAACQ5A0AAAAkeQMAAACStwEAACB5GwAAAJK3AQAAIL0MBgAAkOQNAAAAJHkDAAAASd4AAABIkjcAAAAgeRsAAACStwEAACB5GwAAAJK8DQAAAEneBgAAgPQyGAAAQJI3AAAAkuQNAAAAJHkDAAAASd4AAACAvAwGAACQ5A0AAAAkeQMAAACStwEAACB5GwAAAJK3AQAAIL0MBgAAkOQNAAAAJHkDAAAASd4AAABIkjcAAAAgeRsAAACStwEAACB5GwAAAJK8DQAAAEneBgAAgPQyGAAAQJI3AAAAkuQNAAAAJHkDAAAASd4AAACAvAwGAACQ5A0AAAAkeQMAAACStwEAACB5GwAAAJK3AQAAIL0MBgAAkOQNAAAAJHkDAAAASd4AAABIkjcAAAAgeRsAAACStwEAACB5GwAAAJK8DQAAAEneBgAAgPQyGAAAQJI3AAAAkuQNAAAAJHkDAAAASd4AAACAvAwGAACQ5A0AAAAkeQMAAACStwEAACB5GwAAAJK3AQAAIL0MBgAAkOQNAAAAJHkDAAAASd4AAABIkjcAAAAgeRsAAACStwEAACB5GwAAAJK8DQAAAEneBgAAgCTvfwYDAABI3gYAAIDkbQAAAEjeBgAAgORtAAAASN4GAACAtAG0VANXkqRu3AAAAABJRU5ErkJggg==');
-            background-size: cover;
-            background-position: center;
-            height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* 슬라이드 컨테이너 */
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
             position: relative;
-            margin-bottom: 60px;
         }
 
-        .header::before {
-            content: '';
+        .slide {
+            width: 100vw;
+            height: 100vh;
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4));
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: white;
-        }
-
-        .header-content h1 {
-            font-size: 3.5em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: -0.02em;
-        }
-
-        .header-content p {
-            font-size: 1.2em;
-            opacity: 0.95;
-        }
-
-        /* 컨테이너 */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px 80px;
-        }
-
-        /* 카드 그리드 */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        /* 카드 */
-        .card {
-            background: var(--white);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px var(--shadow);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px var(--shadow-hover);
-        }
-
-        .card-header {
-            padding: 30px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-        }
-
-        .card-badge {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .card-title {
-            font-size: 1.5em;
-            font-weight: 700;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-
-        .card-subtitle {
-            font-size: 0.95em;
-            opacity: 0.9;
-        }
-
-        .card-body {
-            padding: 30px;
-        }
-
-        .card-content {
-            font-size: 0.95em;
-            line-height: 1.8;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-
-        .card-tags {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 80px;
         }
 
-        .tag {
-            padding: 6px 12px;
-            background: var(--light);
-            border-radius: 6px;
-            font-size: 0.85em;
-            color: var(--accent);
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 2;
         }
 
-        /* 퀴즈 카드 */
-        .quiz-card {
+        .slide.prev {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+
+        /* 슬라이드 콘텐츠 */
+        .slide-content {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* 타이틀 슬라이드 */
+        .slide-title {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
         }
 
-        .quiz-card .card-body {
-            padding: 35px;
+        .slide-title h1 {
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
         }
 
-        .quiz-question {
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-bottom: 25px;
-            line-height: 1.4;
-        }
-
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .quiz-option {
-            padding: 18px 24px;
-            background: rgba(255,255,255,0.15);
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-
-        .quiz-option:hover:not(.correct):not(.incorrect) {
-            background: rgba(255,255,255,0.25);
-            border-color: rgba(255,255,255,0.5);
-            transform: translateX(5px);
-        }
-
-        .quiz-option.correct {
-            background: rgba(76, 175, 80, 0.9);
-            border-color: rgba(255,255,255,0.8);
-        }
-
-        .quiz-option.incorrect {
-            background: rgba(244, 67, 54, 0.7);
-            opacity: 0.6;
-        }
-
-        .quiz-feedback {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        /* 인포 카드 */
-        .info-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .info-card .card-body {
-            color: white;
-        }
-
-        /* 섹션 헤더 */
-        .section-header {
-            text-align: center;
+        .slide-title .subtitle {
+            font-size: 1.8em;
+            opacity: 0.9;
             margin-bottom: 50px;
         }
 
-        .section-title {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
+        .slide-title .series-info {
+            font-size: 1.2em;
+            opacity: 0.8;
         }
 
-        .section-subtitle {
-            font-size: 1.1em;
-            color: var(--accent);
+        /* 섹션 타이틀 슬라이드 */
+        .slide-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
-        .series-badge {
+        .slide-section .badge {
             display: inline-block;
-            padding: 8px 20px;
-            background: var(--primary);
-            color: white;
-            border-radius: 25px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        /* 네비게이션 */
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 60px;
-        }
-
-        .nav-btn {
-            padding: 14px 32px;
-            background: white;
-            border: 2px solid var(--primary);
+            padding: 10px 30px;
+            background: rgba(255,255,255,0.2);
             border-radius: 30px;
-            color: var(--primary);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .nav-btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--shadow);
-        }
-
-        .nav-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .series-section {
-            display: none;
-        }
-
-        .series-section.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 반응형 */
-        @media (max-width: 768px) {
-            .header-content h1 {
-                font-size: 2.5em;
-            }
-
-            .container {
-                padding: 0 20px 60px;
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .nav {
-                flex-direction: column;
-            }
-        }
-
-        /* 완료 카드 */
-        .completion-card {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            text-align: center;
-            padding: 60px 40px;
-            border-radius: 16px;
-            margin-top: 40px;
-        }
-
-        .completion-card h3 {
-            font-size: 2.2em;
-            margin-bottom: 20px;
-        }
-
-        .completion-card p {
             font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .slide-section h2 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .slide-section .subtitle {
+            font-size: 1.5em;
+            opacity: 0.9;
+        }
+
+        /* 콘텐츠 슬라이드 */
+        .slide-content-main {
+            background: linear-gradient(135deg, #2d2d2d 0%, #4a4a4a 100%);
+        }
+
+        .slide-content-main .chapter-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .slide-content-main h3 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 40px;
+            line-height: 1.3;
+        }
+
+        .slide-content-main .content-text {
+            font-size: 1.4em;
+            line-height: 1.8;
             margin-bottom: 30px;
             opacity: 0.95;
         }
 
-        .btn {
-            padding: 16px 40px;
+        .slide-content-main .highlight {
+            color: #f093fb;
+            font-weight: 600;
+        }
+
+        .slide-content-main .tags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .slide-content-main .tag {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            font-size: 1em;
+        }
+
+        /* 퀴즈 슬라이드 */
+        .slide-quiz {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .slide-quiz .quiz-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+
+        .slide-quiz .quiz-question {
+            font-size: 2.2em;
+            font-weight: 600;
+            margin-bottom: 50px;
+            line-height: 1.4;
+        }
+
+        .slide-quiz .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .slide-quiz .quiz-option {
+            padding: 30px;
+            background: rgba(255,255,255,0.15);
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .slide-quiz .quiz-option:hover:not(.correct):not(.incorrect) {
+            background: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.6);
+            transform: scale(1.05);
+        }
+
+        .slide-quiz .quiz-option.correct {
+            background: rgba(76, 175, 80, 0.9);
+            border-color: #fff;
+        }
+
+        .slide-quiz .quiz-option.incorrect {
+            background: rgba(244, 67, 54, 0.7);
+            opacity: 0.5;
+        }
+
+        .slide-quiz .quiz-feedback {
+            margin-top: 40px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        /* 완료 슬라이드 */
+        .slide-completion {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .slide-completion h2 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+        }
+
+        .slide-completion p {
+            font-size: 1.6em;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .slide-completion .btn {
+            padding: 20px 50px;
             background: white;
             color: #4facfe;
             border: none;
-            border-radius: 30px;
-            font-size: 1.1em;
+            border-radius: 50px;
+            font-size: 1.4em;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        .slide-completion .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* 네비게이션 */
+        .navigation {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* 진행 표시 */
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.6s ease;
+        }
+
+        /* 슬라이드 번호 */
+        .slide-number {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            font-size: 1.2em;
+            color: rgba(255,255,255,0.7);
+            z-index: 1000;
+        }
+
+        /* 키보드 힌트 */
+        .keyboard-hint {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            font-size: 0.9em;
+            color: rgba(255,255,255,0.5);
+            z-index: 1000;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 20px;
+            }
+
+            .slide-title h1 {
+                font-size: 2.5em;
+            }
+
+            .slide-title .subtitle {
+                font-size: 1.2em;
+            }
+
+            .slide-section h2 {
+                font-size: 2em;
+            }
+
+            .slide-content-main h3 {
+                font-size: 1.8em;
+            }
+
+            .slide-content-main .content-text {
+                font-size: 1.1em;
+            }
+
+            .slide-quiz .quiz-options {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-quiz .quiz-question {
+                font-size: 1.5em;
+            }
+
+            .navigation {
+                bottom: 20px;
+            }
+
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 헤더 -->
-    <div class="header">
-        <div class="header-content">
-            <h1>사물학 시리즈</h1>
-            <p>Objects of Our Lives</p>
+    <!-- 진행 표시 -->
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- 슬라이드 번호 -->
+    <div class="slide-number" id="slideNumber">1 / 25</div>
+
+    <!-- 키보드 힌트 -->
+    <div class="keyboard-hint">← → 또는 클릭으로 이동</div>
+
+    <!-- 슬라이드 컨테이너 -->
+    <div class="slides-container" id="slidesContainer">
+        <!-- 슬라이드 1: 타이틀 -->
+        <div class="slide active slide-title">
+            <div class="slide-content">
+                <h1>사물학 시리즈</h1>
+                <p class="subtitle">Objects of Our Lives</p>
+                <p class="series-info">일상의 사물에서 발견하는 삶의 가치</p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 2: 시리즈 1 타이틀 -->
+        <div class="slide slide-section">
+            <div class="slide-content">
+                <span class="badge">SERIES 1</span>
+                <h2>근사한 하루는,<br>때론 손톱깎이 하나에서<br>시작된다</h2>
+                <p class="subtitle">윤광준 작가와 함께하는 생활명품의 세계</p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 3: 생활명품이란 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">핵심 개념</span>
+                <h3>생활명품이란?</h3>
+                <p class="content-text">
+                    백화점 브랜드가 아닌<br>
+                    <span class="highlight">일상의 아름답고 유용한 물품</span>
+                </p>
+                <div class="tags">
+                    <span class="tag">삼진어묵</span>
+                    <span class="tag">3M 포스트잇</span>
+                    <span class="tag">지포 라이터</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 슬라이드 4: Chapter 1 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">CHAPTER 1</span>
+                <h3>미를 찾아다닌 떠돌이 작가,<br>사물에 정착하다</h3>
+                <p class="content-text">
+                    일본 서점에서 <span class="highlight">볼펜을 주제로 쓴 책</span>을 발견한 순간
+                </p>
+                <p class="content-text">
+                    "볼펜 하나, 종이 하나를 가지고<br>
+                    이렇게 많은 이야기를 할 수 있구나"
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 5: Chapter 2 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">CHAPTER 2</span>
+                <h3>에르메스보다 가치 있는<br>손톱깎이</h3>
+                <p class="content-text">
+                    "손톱 밑에 뭐가 들어가서 따가울 때.<br>
+                    그러니까 에르메스보다 더 중요한 게<br>
+                    바로 <span class="highlight">손톱깎이</span>지."
+                </p>
+                <p class="content-text" style="margin-top: 40px;">
+                    <span class="highlight">명품 = 행복의 빈도를 높여주는 사물</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 6: 퀴즈 1 -->
+        <div class="slide slide-quiz">
+            <div class="slide-content">
+                <p class="quiz-title">🎯 퀴즈 1</p>
+                <p class="quiz-question">윤광준 작가가 에르메스보다 중요하다고<br>말한 생활명품은?</p>
+                <div class="quiz-options" id="quiz1">
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz1', false)">A. 몽블랑 만년필</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz1', true)">B. 손톱깎이</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz1', false)">C. 미군 군용 벨트</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz1', false)">D. 우산</div>
+                </div>
+                <div class="quiz-feedback" id="feedback-quiz1"></div>
+            </div>
+        </div>
+
+        <!-- 슬라이드 7: Chapter 3 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">CHAPTER 3</span>
+                <h3>한국인은 왜<br>소비를 죄악으로 여길까</h3>
+                <p class="content-text">
+                    개인보다 조직과 국가의 구성원으로<br>
+                    사는 것에 익숙한 한국 사회
+                </p>
+                <p class="content-text">
+                    <span class="highlight">독일:</span> 바우하우스 정신 계승<br>
+                    사물 하나하나에 공을 들임
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 8: Chapter 4 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">CHAPTER 4</span>
+                <h3>'좋아요', '북마크'는<br>공부가 아니다</h3>
+                <p class="content-text">
+                    실물로 보면 느껴지는 것들이 있어요.<br>
+                    <span class="highlight">"나름 고민한 흔적이 느껴지는 것이구나"</span>
+                </p>
+                <p class="content-text">
+                    그런 물건은 뭐, 당연히 사죠.
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 9: 퀴즈 2 -->
+        <div class="slide slide-quiz">
+            <div class="slide-content">
+                <p class="quiz-title">🎯 퀴즈 2</p>
+                <p class="quiz-question">"난 차보다 커피가 좋아"는<br>진정한 취향일까요?</p>
+                <div class="quiz-options" id="quiz2">
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz2', false)">A. 네, 명확한 취향입니다</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz2', true)">B. 아니요, 단순 선호입니다</div>
+                </div>
+                <div class="quiz-feedback" id="feedback-quiz2"></div>
+            </div>
+        </div>
+
+        <!-- 슬라이드 10: Chapter 5 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">CHAPTER 5</span>
+                <h3>잔고와 욕망 사이</h3>
+                <p class="content-text">
+                    정말 사고 싶은데 망설이다 못 사면?<br>
+                    → 욕망도 충족 못하고 돈도 없는 상태
+                </p>
+                <p class="content-text">
+                    먼저 사면?<br>
+                    → <span class="highlight">욕망 하나는 충족한 상태</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 11: Chapter 6 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">CHAPTER 6</span>
+                <h3>파버카스텔</h3>
+                <p class="content-text">
+                    연필을 글씨 쓰는 물건이 아니고<br>
+                    <span class="highlight">창조적 도구</span>라 생각한다
+                </p>
+                <p class="content-text">
+                    263년 동안 연필을 만들고 지킨 원동력
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 12: 시리즈 2 타이틀 -->
+        <div class="slide slide-section">
+            <div class="slide-content">
+                <span class="badge">SERIES 2</span>
+                <h2>그들은 왜<br>답례품이 될 수밖에<br>없었는가</h2>
+                <p class="subtitle">일용품의 진짜 가치를 찾아서</p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 13: Chapter 1 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">CHAPTER 1</span>
+                <h3>우리는 우리가<br>바라보는 것이 된다</h3>
+                <p class="content-text">
+                    <span class="highlight">We Become What We Behold</span>
+                </p>
+                <p class="content-text">
+                    대충 편한 티셔츠 → 잠 설침<br>
+                    고심해서 고른 잠옷 → 바로 숙면
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 14: 퀴즈 3 -->
+        <div class="slide slide-quiz">
+            <div class="slide-content">
+                <p class="quiz-title">🎯 퀴즈 3</p>
+                <p class="quiz-question">김재원 대표가 일용품을<br>일상의 ___라고 표현했을까요?</p>
+                <div class="quiz-options" id="quiz3">
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz3', false)">A. 장식품</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz3', true)">B. 동반자</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz3', false)">C. 소모품</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz3', false)">D. 사치품</div>
+                </div>
+                <div class="quiz-feedback" id="feedback-quiz3"></div>
+            </div>
+        </div>
+
+        <!-- 슬라이드 15: Chapter 2 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">CHAPTER 2</span>
+                <h3>답례품 삼총사</h3>
+                <div class="tags">
+                    <span class="tag">손톱깎이</span>
+                    <span class="tag">수건</span>
+                    <span class="tag">우산</span>
+                </div>
+                <p class="content-text" style="margin-top: 50px;">
+                    철저히 <span class="highlight">주는 사람의 입장</span>에서<br>
+                    선택된 사물들
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 16: Chapter 3 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">CHAPTER 3</span>
+                <h3>스와다 손톱깎이</h3>
+                <p class="content-text">
+                    <span class="highlight">좋은 제품 찾는 방법:</span><br>
+                    그 제품군으로 유명한 국가를 특정하기
+                </p>
+                <p class="content-text">
+                    손톱깎이 → 절삭력이 강한 나라<br>
+                    (독일, 일본)
+                </p>
+                <div class="tags" style="margin-top: 40px;">
+                    <span class="tag">가격 약 10만원</span>
+                    <span class="tag">1926년부터</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 슬라이드 17: 시리즈 3 타이틀 -->
+        <div class="slide slide-section">
+            <div class="slide-content">
+                <span class="badge">SERIES 3</span>
+                <h2>사물은 세상이다</h2>
+                <p class="subtitle">소비를 넘어 세상을 공부하는 법</p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 18: 핵심 개념 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">핵심 개념</span>
+                <h3>좋은 사물은<br>좋은 책과도 같다</h3>
+                <p class="content-text">
+                    만드는 이의 정신은 물건에 담겨있어요.
+                </p>
+                <p class="content-text">
+                    <span class="highlight">사물은 사람이고, 세상이에요.</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 19: 방법 1 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">방법 1</span>
+                <h3>익숙한 사물에<br>새로운 관점 한 스푼</h3>
+                <p class="content-text">
+                    <span class="highlight">맥거핀 매거진</span> - 네덜란드
+                </p>
+                <p class="content-text">
+                    하나의 사물 = 하나의 이슈<br>
+                    예: 6호 '공(Ball)'
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 20: 퀴즈 4 -->
+        <div class="slide slide-quiz">
+            <div class="slide-content">
+                <p class="quiz-title">🎯 퀴즈 4</p>
+                <p class="quiz-question">맥거핀 매거진은 '책상'을<br>무엇이라고 정의했을까요?</p>
+                <div class="quiz-options" id="quiz4">
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz4', false)">A. 일상의 무대</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz4', true)">B. 일상의 조종석</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz4', false)">C. 일상의 파트너</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, 'quiz4', false)">D. 일상의 거울</div>
+                </div>
+                <div class="quiz-feedback" id="feedback-quiz4"></div>
+            </div>
+        </div>
+
+        <!-- 슬라이드 21: 방법 2 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">방법 2</span>
+                <h3>가만히 사물을 바라보라</h3>
+                <p class="content-text">
+                    정물에는 <span class="highlight">시간의 흐름</span>이<br>
+                    품어져 있습니다
+                </p>
+                <p class="content-text">
+                    생과 사의 경계가 주는 고요함
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 22: 방법 3 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">방법 3</span>
+                <h3>길 위의 사물에서도<br>영감은 생긴다</h3>
+                <p class="content-text">
+                    <span class="highlight">초예술 토머슨</span><br>
+                    쓸모는 없지만 아름다운 것들
+                </p>
+                <p class="content-text">
+                    "자기 눈알이 회복되는 듯한<br>
+                    해방감을 느낀다"
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 23: 방법 4 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">방법 4</span>
+                <h3>사물을 존중하는 법</h3>
+                <p class="content-text">
+                    티셔츠 한 장을 만드는데<br>
+                    물 13만5000L, 화학비료 10%, 살충제 25%
+                </p>
+                <p class="content-text">
+                    가격표를 넘어서는<br>
+                    <span class="highlight">진정한 가치</span>를 알아야 한다
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 24: 마치며 -->
+        <div class="slide slide-content-main">
+            <div class="slide-content">
+                <span class="chapter-badge">마치며</span>
+                <h3>무언가를 파고든다는 것</h3>
+                <p class="content-text">
+                    만년필 → 종이 → 잉크 → 편지지 → ...
+                </p>
+                <p class="content-text" style="margin-top: 40px;">
+                    <span class="highlight">"당장 실행해 보세요"</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 25: 완료 -->
+        <div class="slide slide-completion">
+            <div class="slide-content">
+                <h2>🎓 사물학 수료</h2>
+                <p>사물학 시리즈를 모두 마쳤습니다!<br>이제 당신의 차례입니다.</p>
+                <button class="btn" onclick="completeCourse()">수료증 받기</button>
+            </div>
         </div>
     </div>
 
-    <!-- 컨테이너 -->
-    <div class="container">
-        <!-- 네비게이션 -->
-        <div class="nav">
-            <button class="nav-btn active" onclick="showSeries(1)">1강 · 생활명품의 발견</button>
-            <button class="nav-btn" onclick="showSeries(2)">2강 · 답례품을 넘어서</button>
-            <button class="nav-btn" onclick="showSeries(3)">3강 · 사물은 세상이다</button>
-        </div>
-
-        <!-- 시리즈 1 -->
-        <div class="series-section active" id="series1">
-            <div class="section-header">
-                <span class="series-badge">SERIES 1</span>
-                <h2 class="section-title">근사한 하루는, 때론 손톱깎이 하나에서 시작된다</h2>
-                <p class="section-subtitle">윤광준 작가와 함께하는 생활명품의 세계</p>
-            </div>
-
-            <div class="card-grid">
-                <!-- 카드 1 -->
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">핵심 개념</span>
-                        <h3 class="card-title">생활명품이란?</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            백화점 브랜드가 아닌 <strong>일상의 아름답고 유용한 물품</strong>을 말합니다.
-                            삼진어묵, 3M 포스트잇, 지포 라이터 같은 것들이죠.
-                        </p>
-                        <div class="card-tags">
-                            <span class="tag">일상</span>
-                            <span class="tag">실용성</span>
-                            <span class="tag">가치</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 카드 2 -->
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">Chapter 1</span>
-                        <h3 class="card-title">미를 찾아다닌 떠돌이 작가</h3>
-                        <p class="card-subtitle">사물에 정착하다</p>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            윤광준 작가는 사진기자, 오디오 평론가, 에세이스트를 거쳐 40대에 프리랜스 작가가 되었습니다.
-                            일본 서점에서 <strong>볼펜을 주제로 쓴 책</strong>을 발견한 것이 전환점이었죠.
-                        </p>
-                        <p class="card-content">
-                            "볼펜 하나, 종이 하나를 가지고 이렇게 많은 이야기를 할 수 있구나, 싶었죠."
-                        </p>
-                        <div class="card-tags">
-                            <span class="tag">2002년 첫 책</span>
-                            <span class="tag">생활명품산책</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 카드 3 -->
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">Chapter 2</span>
-                        <h3 class="card-title">에르메스보다 가치 있는 손톱깎이</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            "손톱 밑에 뭐가 들어가서 따가울 때. 생각해 봐요, 막 미칠 지경이잖아.
-                            그러니까 에르메스보다 더 중요한 게 바로 손톱깎이지."
-                        </p>
-                        <p class="card-content">
-                            <strong>명품 = 행복의 빈도를 높여주는 사물</strong><br>
-                            순간의 커다란 행복보다 매일 느낄 수 있는 행복이 중요합니다.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 퀴즈 카드 1 -->
-                <div class="card quiz-card">
-                    <div class="card-body">
-                        <div class="quiz-question">
-                            Q. 윤광준 작가가 에르메스보다 중요하다고 말한 생활명품은?
-                        </div>
-                        <div class="quiz-options" id="quiz1">
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz1', false)">A. 몽블랑 만년필</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz1', true)">B. 손톱깎이</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz1', false)">C. 미군 군용 벨트</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz1', false)">D. 우산</div>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-quiz1"></div>
-                    </div>
-                </div>
-
-                <!-- 카드 4 -->
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">Chapter 3</span>
-                        <h3 class="card-title">한국인은 왜 소비를 죄악으로 여길까</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            개인보다 조직과 국가의 구성원으로 사는 것에 익숙한 한국 사회.
-                            소비에 대한 이유 모를 죄책감이 존재합니다.
-                        </p>
-                        <p class="card-content">
-                            <strong>독일의 경우:</strong> 바우하우스 디자인 정신을 계승해
-                            컴퓨터, 비행기 인테리어, 와인잔, 계산기까지 사물 하나하나에 공을 들입니다.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 카드 5 -->
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">Chapter 4</span>
-                        <h3 class="card-title">'좋아요', '북마크'는 공부가 아니다</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            실물로 보면 느껴지는 것들이 있어요. "나름 고민한 흔적이 느껴지는 것이구나"라는
-                            느낌이 들 때가 있거든. 그런 물건은 뭐, 당연히 사죠.
-                        </p>
-                        <p class="card-content">
-                            <strong>레트로그래프 마카롱:</strong> 알루미늄 다이캐스팅 사용,
-                            마카롱처럼 둥근 모서리, "못생긴 오디오는 오래가지 못한다" 철학
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 퀴즈 카드 2 -->
-                <div class="card quiz-card">
-                    <div class="card-body">
-                        <div class="quiz-question">
-                            Q. "난 차보다 커피가 좋아"는 진정한 취향일까요?
-                        </div>
-                        <div class="quiz-options" id="quiz2">
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz2', false)">A. 네, 명확한 취향입니다</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz2', true)">B. 아니요, 단순 선호입니다</div>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-quiz2"></div>
-                        <div id="quiz2-explanation" style="display:none; margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.2); border-radius: 8px;">
-                            <strong>윤광준 작가:</strong> "왜 좋은지 그 이유를 100개 정도 댈 수 있을까?
-                            못 댄다면 취향이 아니라고 생각해요. 취향 = 반복으로 단단해진 판결의 근거"
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 카드 6 -->
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">Chapter 5</span>
-                        <h3 class="card-title">잔고와 욕망 사이</h3>
-                        <p class="card-subtitle">가난한 명품주의자의 선택</p>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            "관심 갖는 물건은 카드 한도 내에서 감당 가능한 걸로 정했으니까요."
-                        </p>
-                        <p class="card-content">
-                            정말 사고 싶은데 망설이다 못 사면? → 욕망도 충족 못하고 돈도 없는 상태<br>
-                            먼저 사면? → 욕망 하나는 충족한 상태
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 카드 7 -->
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">Chapter 6</span>
-                        <h3 class="card-title">파버카스텔</h3>
-                        <p class="card-subtitle">연필을 연필이라 부르지 않는 브랜드</p>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            263년 역사의 독일 필기구 브랜드.
-                            회장의 한마디: "연필을 글씨 쓰는 물건이 아니고 <strong>창조적 도구</strong>라 생각한다"
-                        </p>
-                        <p class="card-content">
-                            생각을 드러내고 미래를 열기도 하며, 세상을 바꿀 꿈을 꾸기도 하는 도구.
-                            노벨상 수상자, 고흐와 케네디 대통령이 애용했습니다.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 시리즈 2 -->
-        <div class="series-section" id="series2">
-            <div class="section-header">
-                <span class="series-badge">SERIES 2</span>
-                <h2 class="section-title">그들은 왜 답례품이 될 수밖에 없었는가</h2>
-                <p class="section-subtitle">일용품의 진짜 가치를 찾아서</p>
-            </div>
-
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">핵심 질문</span>
-                        <h3 class="card-title">우리는 왜 일용품에 신경을 쓰지 않을까?</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            답례품으로 둘러싸인 우리의 일상.
-                            손톱깎이, 수건, 우산... 모두 누군가의 치과 개업, 돌잔치, 창립기념일의 흔적입니다.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">Chapter 1</span>
-                        <h3 class="card-title">우리는 우리가 바라보는 것이 된다</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            We Become What We Behold - 우리는 우리가 자주 접하는 것들에 의해 영향을 받습니다.
-                        </p>
-                        <p class="card-content">
-                            <strong>잠옷의 마법:</strong><br>
-                            대충 편한 티셔츠 → 스마트폰 보다가 잠 설침<br>
-                            고심해서 고른 잠옷 → 단추 채우며 하루 정리, 바로 숙면
-                        </p>
-                        <div class="card-tags">
-                            <span class="tag">마셜 맥루한</span>
-                            <span class="tag">도구가 우리를 형성한다</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card quiz-card">
-                    <div class="card-body">
-                        <div class="quiz-question">
-                            Q. 김재원 대표가 일용품을 일상의 ___라고 표현했을까요?
-                        </div>
-                        <div class="quiz-options" id="quiz3">
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz3', false)">A. 장식품</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz3', true)">B. 동반자</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz3', false)">C. 소모품</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz3', false)">D. 사치품</div>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-quiz3"></div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">Chapter 2</span>
-                        <h3 class="card-title">답례품이 바꿔버린 일용품의 의미</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            <strong>답례품 삼총사:</strong><br>
-                            ✓ 손톱깎이: 'OO치과 개업 기념'<br>
-                            ✓ 수건: 돌잔치 답례품<br>
-                            ✓ 우산: 회사 창립기념일
-                        </p>
-                        <p class="card-content">
-                            "답례품이 우리의 일상 속 취향을 납작하게 만드는 것만 같았어요."
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card info-card">
-                    <div class="card-header" style="background: transparent;">
-                        <span class="card-badge">왜 답례품이 되었나</span>
-                        <h3 class="card-title">공통점</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            1. 모두가 만족하는 제품<br>
-                            2. 받아도 곤란하지 않음<br>
-                            3. 다다익선<br>
-                            4. 자주 잃어버림<br>
-                            5. 가격이 저렴<br><br>
-                            <strong>→ 철저히 주는 사람의 입장에서 선택된 사물</strong>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">Chapter 3</span>
-                        <h3 class="card-title">스와다 손톱깎이</h3>
-                        <p class="card-subtitle">예술적인 정밀함</p>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            <strong>좋은 제품 찾는 방법:</strong><br>
-                            그 제품군으로 유명한 국가를 특정하기
-                        </p>
-                        <p class="card-content">
-                            시계 → 스위스 / 구두 → 이탈리아 / 자동차 → 독일<br>
-                            <strong>손톱깎이 → 절삭력이 강한 나라 (독일, 일본)</strong>
-                        </p>
-                        <p class="card-content">
-                            스와다(SUWADA): 1926년부터 칼 전문 제작<br>
-                            "손톱을 깎으면서도 이렇게 정갈한 소리가 날 수 있다는 걸 처음 알았습니다."
-                        </p>
-                        <div class="card-tags">
-                            <span class="tag">가격 약 10만원</span>
-                            <span class="tag">칼날과 칼날을 맞추어 자른다</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 시리즈 3 -->
-        <div class="series-section" id="series3">
-            <div class="section-header">
-                <span class="series-badge">SERIES 3</span>
-                <h2 class="section-title">사물은 세상이다</h2>
-                <p class="section-subtitle">소비를 넘어 세상을 공부하는 법</p>
-            </div>
-
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">핵심 개념</span>
-                        <h3 class="card-title">좋은 사물은 좋은 책과도 같다</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            "소설가나 철학자의 정신은 글이나 책에 담겨있듯이,
-                            만드는 이의 정신은 물건에 담겨있어요.
-                            <strong>사물은 사람이고, 세상이에요.</strong>"
-                        </p>
-                        <p class="card-content">
-                            "'커피 맛이 다 똑같지'라고 생각한다면, 누가 좋은 커피를 만들려고 하겠습니까.
-                            아름다움을 느끼는 사람은 작은 차이에 민감합니다."
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">방법 1</span>
-                        <h3 class="card-title">익숙한 사물에 새로운 관점 한 스푼</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            <strong>맥거핀(MacGuffin) 매거진</strong> - 2015년 네덜란드<br>
-                            하나의 사물 = 하나의 이슈
-                        </p>
-                        <p class="card-content">
-                            예시: 6호 '공(Ball)'<br>
-                            • 축구, 야구 등 운동<br>
-                            • 공을 해부한 예술 사진<br>
-                            • 볼펜 (Ballpoint 펜!)<br>
-                            • 클럽의 미러볼<br>
-                            • 버블 → 일본 버블 경제
-                        </p>
-                        <div class="card-tags">
-                            <span class="tag">공은 평등의 완벽한 상징</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card quiz-card">
-                    <div class="card-body">
-                        <div class="quiz-question">
-                            Q. 맥거핀 매거진은 '책상'을 무엇이라고 정의했을까요?
-                        </div>
-                        <div class="quiz-options" id="quiz4">
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz4', false)">A. 일상의 무대</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz4', true)">B. 일상의 조종석</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz4', false)">C. 일상의 파트너</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz4', false)">D. 일상의 거울</div>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-quiz4"></div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">방법 2</span>
-                        <h3 class="card-title">가만히 사물을 바라보라</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            "음식을 구하고 구한 음식을 먹기까지 그 사이에 시간이 있다.
-                            음식이 어딘가에 놓이는 시간이다."
-                        </p>
-                        <p class="card-content">
-                            정물에는 시간의 흐름이 품어져 있습니다.
-                            탄생 이후의 시간이 숨어있고, 생과 사의 경계가 주는 고요함이 있습니다.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">방법 3</span>
-                        <h3 class="card-title">길 위의 사물에서도 영감은 생긴다</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            <strong>초예술 토머슨</strong><br>
-                            창안자: 아카세가와 겐페이<br>
-                            정의: 쓸모는 없지만 아름다운 것들
-                        </p>
-                        <p class="card-content">
-                            최초 발견: 건물 외벽의 낮은 계단<br>
-                            계단을 올라가도 건물 진입 불가, 창문만 보고 내려올 수밖에 없는 구조
-                        </p>
-                        <p class="card-content">
-                            "우리는 '의도된 것'을 싫어했기 때문이었다.
-                            거리를 터벅터벅 걷다가 좋은 물건을 발견했을 때
-                            처음으로 자기 눈알이 회복되는 듯한 해방감을 느낀다."
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">방법 4</span>
-                        <h3 class="card-title">사물을 존중하는 법을 찾다</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            <strong>티셔츠의 일생</strong> (애니 레너드 『물건 이야기』)
-                        </p>
-                        <p class="card-content">
-                            1. 면화 농장: 미국인 1명 소비 면화 재배에 연간 물 13만5000L 필요<br>
-                            세계 화학비료 10%, 살충제 25% 투입<br><br>
-                            2. 천 만들기: 수산화나트륨 용액에 끓임, 표백제, 포름알데히드로 색 입히기
-                        </p>
-                        <p class="card-content">
-                            "우리는 물건들에 대해 가격표에 찍힌 숫자나 소유권의 자격을 훨씬 넘어서는,
-                            <strong>진정한 가치</strong>를 알아야 한다."
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card quiz-card">
-                    <div class="card-body">
-                        <div class="quiz-question">
-                            Q. 사물 공부의 핵심은?
-                        </div>
-                        <div class="quiz-options" id="quiz5">
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz5', false)">A. 비싼 물건 많이 사기</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz5', true)">B. 경험하고 관찰하고 존중하기</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz5', false)">C. SNS에서 유명한 제품 따라 사기</div>
-                            <div class="quiz-option" onclick="checkAnswer(this, 'quiz5', false)">D. 책만 읽고 공부하기</div>
-                        </div>
-                        <div class="quiz-feedback" id="feedback-quiz5"></div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-badge">마치며</span>
-                        <h3 class="card-title">무언가를 파고든다는 것</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-content">
-                            "모든 인간에게는 똑같은 크기의 문이 있는데, 그 문을 열었을 때
-                            누군가에겐 한 평짜리 방이 있고, 누군가에게는 끝이 안 보이는 공간이 펼쳐질 수도 있어요."
-                        </p>
-                        <p class="card-content">
-                            만년필 → 종이 → 잉크 → 편지지 → ...<br>
-                            "제가 무언가를 딥다이브를 하지 않았다면 절대 만나지 않았을 것들을 만나고,
-                            그럼 새로운 문이 열려요."
-                        </p>
-                        <p class="card-content">
-                            "우리의 삶은 왜 이렇게 더디게 변할까요?
-                            사람은 아는 만큼 행동하지 않기 때문이에요.
-                            왜 그래야 하는지 알았다면, <strong>당장 실행해 보세요.</strong>"
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 완료 카드 -->
-            <div class="completion-card">
-                <h3>🎓 사물학 수료 과제</h3>
-                <p>사물학 시리즈를 모두 마쳤습니다!<br>이제 당신의 차례입니다.</p>
-                <button class="btn" onclick="completeCourse()">사물학 수료하기</button>
-            </div>
-        </div>
+    <!-- 네비게이션 -->
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="prevSlide()">←</button>
+        <button class="nav-btn" id="nextBtn" onclick="nextSlide()">→</button>
     </div>
 
     <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
         const quizAttempts = {};
 
-        function showSeries(num) {
-            // 모든 시리즈 숨기기
-            document.querySelectorAll('.series-section').forEach(s => s.classList.remove('active'));
-            document.getElementById(`series${num}`).classList.add('active');
-
-            // 네비게이션 버튼 활성화
-            document.querySelectorAll('.nav-btn').forEach((btn, idx) => {
-                btn.classList.toggle('active', idx === num - 1);
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else if (index < currentSlide) {
+                    slide.classList.add('prev');
+                }
             });
 
-            // 페이지 상단으로 스크롤
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            // 진행률 업데이트
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // 슬라이드 번호 업데이트
+            document.getElementById('slideNumber').textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+            // 버튼 상태 업데이트
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
         }
 
         function checkAnswer(option, quizId, isCorrect) {
@@ -883,26 +803,11 @@
                 option.classList.add('correct');
                 feedback.innerHTML = '✓ 정답입니다!';
 
-                // 퀴즈2 설명 표시
-                if (quizId === 'quiz2') {
-                    const explanation = document.getElementById('quiz2-explanation');
-                    if (explanation) {
-                        setTimeout(() => {
-                            explanation.style.display = 'block';
-                        }, 500);
-                    }
-                }
-
-                delete quizAttempts[quizId];
+                setTimeout(() => {
+                    nextSlide();
+                }, 1500);
             } else {
                 option.classList.add('incorrect');
-
-                if (!quizAttempts[quizId]) {
-                    quizAttempts[quizId] = 1;
-                } else {
-                    quizAttempts[quizId]++;
-                }
-
                 feedback.innerHTML = '다시 한번 생각해보세요!';
 
                 setTimeout(() => {
@@ -914,6 +819,27 @@
         function completeCourse() {
             alert('🎓 축하합니다! 사물학 시리즈를 모두 완료했습니다!\n\n이제 당신의 주변 사물들이 다르게 보일 거예요.\n일상 속 작은 사물 하나하나에 담긴 이야기를 발견하는 즐거움을 누리세요!');
         }
+
+        // 키보드 이벤트
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+        // 클릭으로 다음 슬라이드
+        document.getElementById('slidesContainer').addEventListener('click', (e) => {
+            if (!e.target.closest('.quiz-option') && !e.target.closest('.btn') && !e.target.closest('.nav-btn')) {
+                nextSlide();
+            }
+        });
+
+        // 초기화
+        updateSlide();
     </script>
 </body>
 </html>
